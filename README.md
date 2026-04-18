@@ -9,16 +9,9 @@
 </a>
 
 
-<br/><br/>
-
-[![](https://visitcount.itsvg.in/api?id=clerin-codes&icon=5&color=6)](https://visitcount.itsvg.in)
-![GitHub followers](https://img.shields.io/github/followers/clerin-codes?style=social)
-
 </div>
 
 <!-- No --- here: the hr line was pushing the float image downward -->
-
-
 
 ## <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="28"> About Me
 <img align="right" alt="Coding" width="360" src="https://cdn.dribbble.com/users/1162077/screenshots/3848914/programmer.gif"/>
@@ -171,5 +164,5 @@ const clerin = {
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:bc8cff,50:58a6ff,100:0d1117&height=120&section=footer" width="100%"/>
 
 <div align="center">
-  <sub>⚡ Built with passion by Clerin Balakrishnan | Sri Lanka 🇱🇰</sub>
+  <sub>⚡ Built with passion by Clerin Balakrishnan </sub>
 </div>
