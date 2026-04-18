@@ -13,9 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Generate Snake Animation
         uses: Platane/snk/svg-only@v3
@@ -30,5 +35,8 @@ jobs:
         with:
           target_branch: output
           build_dir: dist
+          keep_history: false
+          allow_empty_commit: false
+          fqdn: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
