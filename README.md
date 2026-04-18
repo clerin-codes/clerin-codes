@@ -5,8 +5,9 @@
 
 <!-- Typing Animation — Doto font -->
 <a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.demolab.com?font=Doto&weight=700&size=22&pause=1000&color=58A6FF&center=true&vCenter=true&width=650&lines=Hey+there!+I'm+Clerin+%F0%9F%91%8B;Aspiring+Software+Engineer+%F0%9F%9A%80;Full-Stack+Developer+%F0%9F%8C%90;DevOps+Enthusiast+%E2%98%81%EF%B8%8F;3rd+Year+IT+Undergraduate+%F0%9F%8E%93;React+Native+Developer+%F0%9F%93%B1;Let's+build+something+amazing!+%E2%9C%A8" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Doto&weight=700&size=40&pause=1000&color=58A6FF&center=true&vCenter=true&width=800&height=90&lines=Hey+there!+I'm+Clerin+%F0%9F%91%8B;Aspiring+Software+Engineer+%F0%9F%9A%80;Full-Stack+Developer+%F0%9F%8C%90;DevOps+Enthusiast+%E2%98%81%EF%B8%8F;3rd+Year+IT+Undergraduate+%F0%9F%8E%93;React+Native+Developer+%F0%9F%93%B1;Let's+build+something+amazing!+%E2%9C%A8" alt="Typing SVG" />
 </a>
+
 
 <br/><br/>
 
@@ -15,12 +16,12 @@
 
 </div>
 
----
+<!-- No --- here: the hr line was pushing the float image downward -->
 
-<img align="right" alt="Coding" width="360" src="https://cdn.dribbble.com/users/1162077/screenshots/3848914/programmer.gif"/>
+
 
 ## <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="28"> About Me
-
+<img align="right" alt="Coding" width="360" src="https://cdn.dribbble.com/users/1162077/screenshots/3848914/programmer.gif"/>
 
 ```typescript
 const clerin = {
@@ -43,8 +44,9 @@ const clerin = {
     "Scaling Web Applications",
     "React Native 📱",
     "Mathematics for Computing",
-  ]
+  ],
 
+  funFact  : "I automate everything I can! 🤖",
 };
 ```
 
