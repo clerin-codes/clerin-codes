@@ -1,9 +1,11 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:58a6ff,100:bc8cff&height=200&section=header&text=Clerin%20Balakrishnan&fontSize=45&fontAlignY=38&desc=Software%20Engineer%20%7C%20Full-Stack%20%7C%20DevOps&descAlignY=58&fontColor=ffffff&animation=fadeIn" width="100%"/>
+<!-- NAME HEADER — Doto font -->
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0d1117,50:58a6ff,100:bc8cff&height=200&section=header&text=Clerin%20Balakrishnan&fontSize=45&fontAlignY=38&desc=Software%20Engineer%20%7C%20Full-Stack%20%7C%20DevOps&descAlignY=58&fontColor=ffffff&animation=fadeIn&fontFamily=Doto" width="100%"/>
 
+<!-- Typing Animation — Doto font -->
 <a href="https://git.io/typing-svg">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=22&pause=1000&color=58A6FF&center=true&vCenter=true&width=650&lines=Hey+there!+I'm+Clerin+%F0%9F%91%8B;Aspiring+Software+Engineer+%F0%9F%9A%80;Full-Stack+Developer+%F0%9F%8C%90;DevOps+Enthusiast+%E2%98%81%EF%B8%8F;3rd+Year+IT+Undergraduate+%F0%9F%8E%93;React+Native+Developer+%F0%9F%93%B1;Let's+build+something+amazing!+%E2%9C%A8" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Doto&weight=700&size=22&pause=1000&color=58A6FF&center=true&vCenter=true&width=650&lines=Hey+there!+I'm+Clerin+%F0%9F%91%8B;Aspiring+Software+Engineer+%F0%9F%9A%80;Full-Stack+Developer+%F0%9F%8C%90;DevOps+Enthusiast+%E2%98%81%EF%B8%8F;3rd+Year+IT+Undergraduate+%F0%9F%8E%93;React+Native+Developer+%F0%9F%93%B1;Let's+build+something+amazing!+%E2%9C%A8" alt="Typing SVG" />
 </a>
 
 <br/><br/>
@@ -18,6 +20,7 @@
 <img align="right" alt="Coding" width="360" src="https://cdn.dribbble.com/users/1162077/screenshots/3848914/programmer.gif"/>
 
 ## <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="28"> About Me
+
 
 ```typescript
 const clerin = {
@@ -40,9 +43,8 @@ const clerin = {
     "Scaling Web Applications",
     "React Native 📱",
     "Mathematics for Computing",
-  ],
+  ]
 
-  funFact  : "I automate everything I can! 🤖",
 };
 ```
 
@@ -154,17 +156,7 @@ const clerin = {
 
 ---
 
-## 🏆 GitHub Trophies
-
-<div align="center">
-
-![](https://github-profile-trophy.vercel.app/?username=clerin-codes&theme=radical&no-frame=false&no-bg=false&margin-w=4&column=7)
-
-</div>
-
----
-
-## ✍️ Random Dev Quote
+## ✍️ Dev Quote
 
 <div align="center">
 
