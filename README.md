@@ -8,10 +8,7 @@
   <img src="https://readme-typing-svg.demolab.com?font=Doto&weight=700&size=40&pause=1000&color=58A6FF&center=true&vCenter=true&width=900&height=90&lines=Hey+Developers!+%E2%9D%A4%EF%B8%8F+I'm+Clerin+%F0%9F%91%8B;Aspiring+Software+Engineer+%F0%9F%9A%80;Full-Stack+Developer+%F0%9F%8C%90;DevOps+Enthusiast+%E2%98%81%EF%B8%8F;3rd+Year+IT+Undergraduate+%F0%9F%8E%93;React+Native+Developer+%F0%9F%93%B1;Let's+build+something+amazing!+%E2%9C%A8" alt="Typing SVG" />
 </a>
 
-
 </div>
-
-<!-- No --- here: the hr line was pushing the float image downward -->
 
 ## <img src="https://media.giphy.com/media/hvRJCLFzcasrR4ia7z/giphy.gif" width="28"> About Me
 <img align="right" alt="Coding" width="360" src="https://cdn.dribbble.com/users/1162077/screenshots/3848914/programmer.gif"/>
@@ -124,20 +121,25 @@ const clerin = {
 
 ## 📊 GitHub Stats
 
-<div align="center">
+<!-- Stats card — title_color & icon_color match header blue #58a6ff, bg matches dark #0d1117 -->
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=clerin-codes&show_icons=true&theme=tokyonight&title_color=58a6ff&icon_color=bc8cff&text_color=ffffff&bg_color=0d1117&border_color=58a6ff&border_radius=10&include_all_commits=true&count_private=true&locale=en" alt="Clerin's GitHub Stats" />
+</p>
 
-<img src="https://github-readme-stats.vercel.app/api?username=clerin-codes&theme=radical&hide_border=false&include_all_commits=true&count_private=true" height="180"/>
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=clerin-codes&theme=radical&hide_border=false&include_all_commits=true&count_private=true&layout=compact" height="180"/>
+<!-- Streak card — ring & fire match header purple bc8cff, dates in blue 58a6ff -->
+<p align="center">
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=clerin-codes&theme=tokyonight&background=0d1117&border=58a6ff&stroke=58a6ff&ring=bc8cff&fire=bc8cff&currStreakNum=ffffff&sideNums=ffffff&currStreakLabel=58a6ff&sideLabels=58a6ff&dates=aaaaaa&border_radius=10" alt="GitHub Streak Stats" />
+</p>
 
-<br/>
+<!-- Top langs — same dark bg, blue/purple accents -->
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=clerin-codes&layout=compact&theme=tokyonight&title_color=58a6ff&text_color=ffffff&bg_color=0d1117&border_color=58a6ff&border_radius=10&include_all_commits=true&count_private=true" alt="Top Languages" />
+</p>
 
-<img src="https://nirzak-streak-stats.vercel.app/?user=clerin-codes&theme=radical&hide_border=false" width="60%"/>
-
-</div>
 
 ---
 
-## 🐍 Snake eating my Contributions
+## 🐍 GitHub Contribution Grid Snake
 
 <div align="center">
 
@@ -164,5 +166,5 @@ const clerin = {
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:bc8cff,50:58a6ff,100:0d1117&height=120&section=footer" width="100%"/>
 
 <div align="center">
-  <sub>⚡ Built with passion by Clerin Balakrishnan </sub>
+  <sub>⚡ Built with passion by Clerin Balakrishnan</sub>
 </div>
