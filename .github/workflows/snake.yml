@@ -12,6 +12,7 @@ jobs:
   generate-snake:
     runs-on: ubuntu-latest
     timeout-minutes: 10
+
     permissions:
       contents: write
 
@@ -26,35 +27,30 @@ jobs:
         with:
           github_user_name: clerin-codes
           outputs: |
-            dist/github-snake.svg?color_snake=lime&color_dots=#b0d9b0,#1f6b2e,#2ea043,#3dba56,#56d364&color_empty=#eafbea&gap=2
+            dist/github-snake.svg?color_snake=0066ff&color_dots=#b0d9ff,#1f4db8,#2668ea,#3a7eff,#58a6ff&color_empty=#e8f4ff&gap=2
 
       - name: Generate Snake Animation (Dark with Grid)
         uses: Platane/snk/svg-only@v3
         with:
           github_user_name: clerin-codes
           outputs: |
-            dist/github-snake-dark.svg?palette=github-dark&color_snake=lime&color_dots=#161b22,#1f6b2e,#2ea043,#3dba56,#56d364&color_empty=#0d1117&gap=2
+            dist/github-snake-dark.svg?palette=github-dark&color_snake=0066ff&color_dots=#161b22,#1f4db8,#2668ea,#3a7eff,#58a6ff&color_empty=0d1117&gap=2
 
       - name: Add grid lines via SVG post-processing
         run: |
           python3 << 'EOF'
           import re
-
           def add_grid(filepath, bg_color, grid_color):
               with open(filepath, 'r') as f:
                   content = f.read()
-
               # Extract viewBox dimensions
               vb = re.search(r'viewBox="0 0 (\d+) (\d+)"', content)
               if not vb:
                   print(f"No viewBox found in {filepath}")
                   return
-
               width = int(vb.group(1))
               height = int(vb.group(2))
-
               cell = 16  # standard cell size used by snk
-
               # Build grid lines
               grid_lines = f'\n  <!-- Grid Overlay -->\n  <g opacity="0.18">\n'
               # vertical lines
@@ -68,16 +64,13 @@ jobs:
                   grid_lines += f'    <line x1="0" y1="{y}" x2="{width}" y2="{y}" stroke="{grid_color}" stroke-width="0.7"/>\n'
                   y += cell
               grid_lines += '  </g>\n'
-
               # Insert grid just after opening <svg ...> tag
               content = re.sub(r'(<svg[^>]*>)', r'\1' + grid_lines, content, count=1)
-
               with open(filepath, 'w') as f:
                   f.write(content)
               print(f"Grid added to {filepath}")
-
-          add_grid('dist/github-snake.svg',      '#eafbea', '#4ade80')
-          add_grid('dist/github-snake-dark.svg', '#0d1117', '#00ff41')
+          add_grid('dist/github-snake.svg',      '#e8f4ff', '#0066ff')
+          add_grid('dist/github-snake-dark.svg', '#0d1117', '#0099ff')
           EOF
 
       - name: Push snake to output branch
