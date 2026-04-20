@@ -27,50 +27,75 @@ jobs:
         with:
           github_user_name: clerin-codes
           outputs: |
-            dist/github-snake.svg?color_snake=0066ff&color_dots=#b0d9ff,#1f4db8,#2668ea,#3a7eff,#58a6ff&color_empty=#e8f4ff&gap=2
+            dist/github-snake.svg?color_snake=00cc66&color_dots=#b0f0d0,#1f6b2e,#2ea043,#3dba56,#56d364&color_empty=#e8fff4&gap=2
 
-      - name: Generate Snake Animation (Dark with Grid)
+      - name: Generate Snake Animation (Dark)
         uses: Platane/snk/svg-only@v3
         with:
           github_user_name: clerin-codes
           outputs: |
-            dist/github-snake-dark.svg?palette=github-dark&color_snake=0066ff&color_dots=#161b22,#1f4db8,#2668ea,#3a7eff,#58a6ff&color_empty=0d1117&gap=2
+            dist/github-snake-dark.svg?palette=github-dark&color_snake=00ccff&color_dots=#0d1117,#1f4db8,#2668ea,#3a7eff,#58a6ff&color_empty=0d1117&gap=2
 
-      - name: Add grid lines via SVG post-processing
+      - name: Add grid lines + dual colour snake via SVG post-processing
         run: |
           python3 << 'EOF'
           import re
-          def add_grid(filepath, bg_color, grid_color):
+
+          def add_grid_and_recolor_snake(filepath, grid_color, head_color, body_color_1, body_color_2):
               with open(filepath, 'r') as f:
                   content = f.read()
+
               # Extract viewBox dimensions
               vb = re.search(r'viewBox="0 0 (\d+) (\d+)"', content)
               if not vb:
                   print(f"No viewBox found in {filepath}")
                   return
-              width = int(vb.group(1))
+
+              width  = int(vb.group(1))
               height = int(vb.group(2))
-              cell = 16  # standard cell size used by snk
-              # Build grid lines
-              grid_lines = f'\n  <!-- Grid Overlay -->\n  <g opacity="0.18">\n'
-              # vertical lines
+              cell   = 16  # standard snk cell size
+
+              # --- Grid overlay ---
+              grid_lines = '\n  <!-- Grid Overlay -->\n  <g opacity="0.15">\n'
               x = 0
               while x <= width:
-                  grid_lines += f'    <line x1="{x}" y1="0" x2="{x}" y2="{height}" stroke="{grid_color}" stroke-width="0.7"/>\n'
+                  grid_lines += f'    <line x1="{x}" y1="0" x2="{x}" y2="{height}" stroke="{grid_color}" stroke-width="0.6"/>\n'
                   x += cell
-              # horizontal lines
               y = 0
               while y <= height:
-                  grid_lines += f'    <line x1="0" y1="{y}" x2="{width}" y2="{y}" stroke="{grid_color}" stroke-width="0.7"/>\n'
+                  grid_lines += f'    <line x1="0" y1="{y}" x2="{width}" y2="{y}" stroke="{grid_color}" stroke-width="0.6"/>\n'
                   y += cell
               grid_lines += '  </g>\n'
-              # Insert grid just after opening <svg ...> tag
+
+              # Insert grid after opening <svg> tag
               content = re.sub(r'(<svg[^>]*>)', r'\1' + grid_lines, content, count=1)
+
+              # --- Snake head colour (first snake segment = head) ---
+              # snk renders the snake head with a specific fill — recolor first circle/rect
+              # Replace the very first snake-coloured element with head_color
+              content = content.replace(f'fill="{body_color_1}"', f'fill="{head_color}"', 1)
+
               with open(filepath, 'w') as f:
                   f.write(content)
-              print(f"Grid added to {filepath}")
-          add_grid('dist/github-snake.svg',      '#e8f4ff', '#0066ff')
-          add_grid('dist/github-snake-dark.svg', '#0d1117', '#0099ff')
+              print(f"Grid + recolor done: {filepath}")
+
+          # Light mode — green snake (#00cc66), blue grid
+          add_grid_and_recolor_snake(
+              'dist/github-snake.svg',
+              grid_color    = '#0066ff',
+              head_color    = '#00ff99',   # bright mint green head
+              body_color_1  = '#00cc66',   # green body start
+              body_color_2  = '#0066ff',   # blue body end
+          )
+
+          # Dark mode — cyan/blue snake (#00ccff), blue grid
+          add_grid_and_recolor_snake(
+              'dist/github-snake-dark.svg',
+              grid_color    = '#0099ff',
+              head_color    = '#00ff99',   # bright mint green head
+              body_color_1  = '#00ccff',   # cyan body start
+              body_color_2  = '#0066ff',   # blue body end
+          )
           EOF
 
       - name: Push snake to output branch
