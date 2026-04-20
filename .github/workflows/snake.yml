@@ -41,60 +41,65 @@ jobs:
           python3 << 'EOF'
           import re
 
-          def add_grid_and_recolor_snake(filepath, grid_color, head_color, body_color_1, body_color_2):
+          def add_grid_and_recolor_snake(filepath, grid_color, head_color, body_color):
               with open(filepath, 'r') as f:
                   content = f.read()
 
-              # Extract viewBox dimensions
-              vb = re.search(r'viewBox="0 0 (\d+) (\d+)"', content)
+              # Extract viewBox dimensions — supports negative offsets like "-16 -32 880 192"
+              vb = re.search(r'viewBox="(-?[\d.]+)\s+(-?[\d.]+)\s+([\d.]+)\s+([\d.]+)"', content)
               if not vb:
                   print(f"No viewBox found in {filepath}")
                   return
 
-              width  = int(vb.group(1))
-              height = int(vb.group(2))
+              vx     = float(vb.group(1))
+              vy     = float(vb.group(2))
+              width  = float(vb.group(3))
+              height = float(vb.group(4))
               cell   = 16  # standard snk cell size
 
-              # --- Grid overlay ---
+              # --- Grid overlay (coordinates respect viewBox origin) ---
               grid_lines = '\n  <!-- Grid Overlay -->\n  <g opacity="0.15">\n'
-              x = 0
-              while x <= width:
-                  grid_lines += f'    <line x1="{x}" y1="0" x2="{x}" y2="{height}" stroke="{grid_color}" stroke-width="0.6"/>\n'
+              x = vx
+              while x <= vx + width:
+                  grid_lines += f'    <line x1="{int(x)}" y1="{int(vy)}" x2="{int(x)}" y2="{int(vy + height)}" stroke="{grid_color}" stroke-width="0.6"/>\n'
                   x += cell
-              y = 0
-              while y <= height:
-                  grid_lines += f'    <line x1="0" y1="{y}" x2="{width}" y2="{y}" stroke="{grid_color}" stroke-width="0.6"/>\n'
+              y = vy
+              while y <= vy + height:
+                  grid_lines += f'    <line x1="{int(vx)}" y1="{int(y)}" x2="{int(vx + width)}" y2="{int(y)}" stroke="{grid_color}" stroke-width="0.6"/>\n'
                   y += cell
               grid_lines += '  </g>\n'
 
-              # Insert grid after opening <svg> tag
-              content = re.sub(r'(<svg[^>]*>)', r'\1' + grid_lines, content, count=1)
+              # Insert grid after opening <svg> tag (drawn first, behind snake/dots)
+              content = re.sub(r'(<svg[^>]*>)', lambda m: m.group(1) + grid_lines, content, count=1)
 
-              # --- Snake head colour (first snake segment = head) ---
-              # snk renders the snake head with a specific fill — recolor first circle/rect
-              # Replace the very first snake-coloured element with head_color
-              content = content.replace(f'fill="{body_color_1}"', f'fill="{head_color}"', 1)
+              # --- Snake body colour: replace CSS variable --cs ---
+              # snk v3 renders the snake using fill:var(--cs) in CSS, not inline fill attributes
+              content = re.sub(r'(--cs:)[^;}"]+', r'\g<1>' + body_color, content)
+
+              # --- Snake head colour: inject CSS rule targeting the head segment (class s0) ---
+              # snk v3 renders the snake as <rect class="s s0/s1/s2/s3"> elements;
+              # s0 is the head (largest, most rounded), s1-s3 are body segments
+              head_css = f'.s.s0{{fill:{head_color}!important;}}'
+              content = content.replace('</style>', head_css + '</style>', 1)
 
               with open(filepath, 'w') as f:
                   f.write(content)
               print(f"Grid + recolor done: {filepath}")
 
-          # Light mode — green snake (#00cc66), blue grid
+          # Light mode — green body, mint green head, blue grid
           add_grid_and_recolor_snake(
               'dist/github-snake.svg',
-              grid_color    = '#0066ff',
-              head_color    = '#00ff99',   # bright mint green head
-              body_color_1  = '#00cc66',   # green body start
-              body_color_2  = '#0066ff',   # blue body end
+              grid_color  = '#0066ff',
+              head_color  = '#00ff99',
+              body_color  = '#00cc66',
           )
 
-          # Dark mode — cyan/blue snake (#00ccff), blue grid
+          # Dark mode — cyan body, mint green head, blue grid
           add_grid_and_recolor_snake(
               'dist/github-snake-dark.svg',
-              grid_color    = '#0099ff',
-              head_color    = '#00ff99',   # bright mint green head
-              body_color_1  = '#00ccff',   # cyan body start
-              body_color_2  = '#0066ff',   # blue body end
+              grid_color  = '#0099ff',
+              head_color  = '#00ff99',
+              body_color  = '#00ccff',
           )
           EOF
 
