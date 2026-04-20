@@ -34,9 +34,8 @@ const clerin = {
     "Scaling Web Applications",
     "React Native 📱",
     "Mathematics for Computing",
-  ],
+  ]
 
-  funFact  : "I automate everything I can! 🤖",
 };
 ```
 
