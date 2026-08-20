@@ -19,7 +19,7 @@ const clerin = {
   title    : "Aspiring Software Engineer",
   degree   : "BSc Honours IT (Software Engineering)",
   grad     : 2027,
-  year     : "3rd Year Undergraduate",
+  year     : "4th Year Undergraduate",
   location : "Sri Lanka 🇱🇰",
 
   passions : [
